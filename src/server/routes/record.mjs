@@ -57,6 +57,16 @@ router.patch("/:id", async (req, res) => {
   res.send(result).status(200);
 });
 
+router.get("/search/:id", async (req, res) => {
+  const collectionName = 'Sheet1'
+  let collection = await db.collection(collectionName);
+  let query = { nume: { $regex: req.params.id, $options: 'i' } };
+  let result = await collection.find(query).toArray();
+
+  if (!result) res.send("Not found").status(404);
+  else res.send(result).status(200);
+});
+
 // This section will help you delete a record
 router.delete("/:id", async (req, res) => {
   const collectionName = 'Sheet1'

@@ -8,6 +8,10 @@ const Record = (props) => (
       <td>{props.record.telefon}</td>
       <td>{props.record.Data}</td>
       <td>
+      <Link style={{color: 'black'}} to={`/details/${props.record._id}`}>
+          Detalii
+        </Link>{" "}
+        |
         <Link style={{color: 'black'}} to={`/edit/${props.record._id}`}>
           Edit
         </Link>{" "}
