@@ -29,9 +29,12 @@ router.get("/:id", async (req, res) => {
 // This section will help you create a new record.
 router.post("/", async (req, res) => {
   let newDocument = {
-    name: req.body.name,
-    phone: req.body.phone,
-    verificare: req.body.verificare,
+    nume: req.body.nume,
+    telefon: req.body.telefon,
+    Adresa: req.body.Adresa,
+    Data: req.body.Data,
+    Lucrare: req.body.Lucrare,
+    proiect: req.body.proiect,
     smsTrimis: false,
 
   };
