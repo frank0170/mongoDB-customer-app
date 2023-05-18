@@ -4,10 +4,12 @@ import { Button } from "@mui/material";
 
 export default function Edit() {
   const [form, setForm] = useState({
-    name: "",
-    position: "",
-    level: "",
-    records: [],
+    nume: "",
+    telefon: "",
+    Adresa: "",
+    Data: "",
+    Lucrare: "",
+    proiect: ""
   });
   const params = useParams();
   const navigate = useNavigate();
@@ -50,9 +52,12 @@ export default function Edit() {
   async function onSubmit(e) {
     e.preventDefault();
     const editedPerson = {
-      name: form.name,
-      phone: form.phone,
-      verificare: form.verificare,
+      nume: form.nume,
+      telefon: form.telefon,
+      Adresa: form.Adresa,
+      Data: form.Data,
+      Lucrare: form.Lucrare,
+      proiect: form.proiect
     };
 
     // This will send a post request to update the data in the database.
@@ -85,13 +90,13 @@ export default function Edit() {
       </div>
       <form onSubmit={onSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Nume</label>
           <input
             type="text"
             className="form-control"
             id="name"
-            value={form.name}
-            onChange={(e) => updateForm({ name: e.target.value })}
+            value={form.nume}
+            onChange={(e) => updateForm({ nume: e.target.value })}
           />
         </div>
 
@@ -99,29 +104,71 @@ export default function Edit() {
         <div style={{ marginTop: "10px" }}>
 
         <div className="form-group">
-          <label htmlFor="position">Phone</label>
+          <label htmlFor="position">Telefon</label>
           <input
             type="text"
             className="form-control"
             id="position"
-            value={form.phone}
-            onChange={(e) => updateForm({ phone: e.target.value })}
+            value={form.telefon}
+            onChange={(e) => updateForm({ telefon: e.target.value })}
           />
         </div>
         </div>
-        <div style={{ marginTop: "10px" }}>
 
+        <div style={{ marginTop: "10px" }}>
         <div className="form-group">
-          <label htmlFor="position">Verificare</label>
+          <label htmlFor="position">Adresa</label>
           <input
             type="text"
             className="form-control"
             id="position"
-            value={form.verificare}
-            onChange={(e) => updateForm({ verificare: e.target.value })}
+            value={form.Adresa}
+            onChange={(e) => updateForm({ Adresa: e.target.value })}
           />
         </div>
         </div>
+
+        <div style={{ marginTop: "10px" }}>
+        <div className="form-group">
+          <label htmlFor="position">Data</label>
+          <input
+            type="text"
+            className="form-control"
+            id="position"
+            value={form.Data}
+            onChange={(e) => updateForm({ Data: e.target.value })}
+          />
+        </div>
+        </div>
+
+        <div style={{ marginTop: "10px" }}>
+        <div className="form-group">
+          <label htmlFor="position">Lucrare</label>
+          <input
+            type="text"
+            className="form-control"
+            id="position"
+            value={form.Lucrare}
+            onChange={(e) => updateForm({ Lucrare: e.target.value })}
+          />
+        </div>
+        </div>
+
+        <div style={{ marginTop: "10px" }}>
+        <div className="form-group">
+          <label htmlFor="position">Proiect</label>
+          <input
+            type="text"
+            className="form-control"
+            id="position"
+            value={form.proiect}
+            onChange={(e) => updateForm({ proiect: e.target.value })}
+          />
+        </div>
+        </div>
+
+
+        
 
         <div style={{ marginTop: "10px" }}>
           <div className="form-group">

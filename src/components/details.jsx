@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 
-const Details = ({id}) => {
+const Details = () => {
   const [form, setForm] = useState({});
 
   const params = useParams();
@@ -35,7 +35,7 @@ const Details = ({id}) => {
     return;
   }, [params.id, navigate]);
 
-  console.log(form)
+  console.log(form);
   return (
     <div>
       <div className="form-group">
@@ -66,4 +66,4 @@ const Details = ({id}) => {
   );
 };
 
-export default Details
+export default Details;

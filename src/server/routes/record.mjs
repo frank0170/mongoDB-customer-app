@@ -46,9 +46,12 @@ router.patch("/:id", async (req, res) => {
   const query = { _id: new ObjectId(req.params.id) };
   const updates =  {
     $set: {
-      name: req.body.name,
-      phone: req.body.phone,
-      verificare: req.body.verificare,
+      nume: req.body.nume,
+      telefon: req.body.telefon,
+      Adresa: req.body.Adresa,
+      Data: req.body.Data,
+      Lucrare: req.body.Lucrare,
+      proiect: req.body.proiect
     }
   };
   const collectionName = 'Sheet1'

@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "./pagination";
 import Record from "./record";
+import Modal from "@mui/material/Modal";
+import Box from "@mui/material/Box";
 
 export default function RecordList() {
   const [records, setRecords] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState("");
 
   const itemsPerPage = 10;
   const start = (currentPage - 1) * itemsPerPage;
@@ -47,9 +49,39 @@ export default function RecordList() {
         record={record}
         deleteRecord={() => deleteRecord(record._id)}
         key={record._id}
+        handleModal={handleModal}
       />
     ));
   }
+
+  const [recordModal, setRecordModal] = useState({
+    nume: "",
+    telefon: "",
+    Adresa: "",
+    Data: "",
+    Lucrare: "",
+    proiect: "",
+  });
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const handleModal = (record) => {
+    setRecordModal(record);
+    setOpen(true);
+  };
 
   const handleSearch = (e) => {
     setCurrentPage(1);
@@ -109,6 +141,39 @@ export default function RecordList() {
         onPrevPage={onPrevPage}
       />
 
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <div>
+            <h4>Nume</h4>
+            <p>{recordModal.nume}</p>
+          </div>
+          <div className="form-group">
+            <h4>Telefon</h4>
+            <p>{recordModal.telefon}</p>
+          </div>
+          <div className="form-group">
+            <h4>Adresa</h4>
+            <p>{recordModal.Adresa}</p>
+          </div>
+          <div className="form-group">
+            <h4>Data lucrare</h4>
+            <p>{recordModal.Data}</p>
+          </div>
+          <div className="form-group">
+            <h4>Tip Lucrare</h4>
+            <p>{recordModal.Lucrare}</p>
+          </div>
+          <div className="form-group">
+            <h4>Proiect</h4>
+            <p>{recordModal.proiect}</p>
+          </div>
+        </Box>
+      </Modal>
     </div>
   );
 }
