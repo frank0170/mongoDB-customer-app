@@ -166,11 +166,25 @@ export default function RecordList() {
           </div>
           <div className="form-group">
             <h4>Tip Lucrare</h4>
-            <p>{recordModal.Lucrare}</p>
+            {recordModal.Lucrare ? (<p>{recordModal?.Lucrare}</p>) : <p style={{color: 'red'}}>nedeterminat</p>}
+
           </div>
+
           <div className="form-group">
             <h4>Proiect</h4>
-            <p>{recordModal.proiect}</p>
+            {recordModal.proiect ? (<p>{recordModal?.proiect}</p>) : <p style={{color: 'red'}}>nedeterminat</p>}
+
+          </div>
+
+          <div className="form-group">
+            <h4>Localitate</h4>
+            {recordModal.Localitate ? (<p>{recordModal?.Localitate}</p>) : <p style={{color: 'red'}}>nedeterminat</p>}
+
+          </div>
+
+          <div className="form-group">
+            <h4>RTL</h4>
+            {recordModal.RTL ? (<p>{recordModal?.RTL}</p>) : <p style={{color: 'red'}}>nedeterminat</p>}
           </div>
         </Box>
       </Modal>
