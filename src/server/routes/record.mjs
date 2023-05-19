@@ -35,6 +35,8 @@ router.post("/", async (req, res) => {
     Data: req.body.Data,
     Lucrare: req.body.Lucrare,
     proiect: req.body.proiect,
+    RTL: req.body.RTL,
+    Localitate: req.body.Localitate,
     smsTrimis: false,
 
   };
@@ -54,7 +56,9 @@ router.patch("/:id", async (req, res) => {
       Adresa: req.body.Adresa,
       Data: req.body.Data,
       Lucrare: req.body.Lucrare,
-      proiect: req.body.proiect
+      proiect: req.body.proiect,
+      RTL: req.body.RTL,
+      Localitate: req.body.Localitate,
     }
   };
   const collectionName = 'Sheet1'

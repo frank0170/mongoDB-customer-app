@@ -61,9 +61,10 @@ export default function RecordList() {
     Data: "",
     Lucrare: "",
     proiect: "",
+    RTL: "",
+    Localitate: ""
   });
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const style = {
@@ -150,41 +151,62 @@ export default function RecordList() {
         <Box sx={style}>
           <div>
             <h4>Nume</h4>
-            <p>{recordModal.nume}</p>
+            <p>{recordModal?.nume}</p>
           </div>
           <div className="form-group">
             <h4>Telefon</h4>
-            <p>{recordModal.telefon}</p>
+            <p>{recordModal?.telefon}</p>
           </div>
           <div className="form-group">
             <h4>Adresa</h4>
-            <p>{recordModal.Adresa}</p>
+            {recordModal?.Adresa ? (
+              <p>{recordModal?.Adresa}</p>
+            ) : (
+              <p style={{ color: "red" }}>nedeterminat</p>
+            )}
           </div>
           <div className="form-group">
             <h4>Data lucrare</h4>
-            <p>{recordModal.Data}</p>
+            {recordModal?.Data ? (
+              <p>{recordModal?.Data}</p>
+            ) : (
+              <p style={{ color: "red" }}>nedeterminat</p>
+            )}
           </div>
           <div className="form-group">
             <h4>Tip Lucrare</h4>
-            {recordModal.Lucrare ? (<p>{recordModal?.Lucrare}</p>) : <p style={{color: 'red'}}>nedeterminat</p>}
-
+            {recordModal?.Lucrare ? (
+              <p>{recordModal?.Lucrare}</p>
+            ) : (
+              <p style={{ color: "red" }}>nedeterminat</p>
+            )}
           </div>
 
           <div className="form-group">
             <h4>Proiect</h4>
-            {recordModal.proiect ? (<p>{recordModal?.proiect}</p>) : <p style={{color: 'red'}}>nedeterminat</p>}
-
+            {recordModal?.proiect ? (
+              <p>{recordModal?.proiect}</p>
+            ) : (
+              <p style={{ color: "red" }}>nedeterminat</p>
+            )}
           </div>
 
           <div className="form-group">
             <h4>Localitate</h4>
-            {recordModal.Localitate ? (<p>{recordModal?.Localitate}</p>) : <p style={{color: 'red'}}>nedeterminat</p>}
-
+            {recordModal?.Localitate ? (
+              <p>{recordModal?.Localitate}</p>
+            ) : (
+              <p style={{ color: "red" }}>nedeterminat</p>
+            )}
           </div>
 
           <div className="form-group">
             <h4>RTL</h4>
-            {recordModal.RTL ? (<p>{recordModal?.RTL}</p>) : <p style={{color: 'red'}}>nedeterminat</p>}
+            {recordModal?.RTL ? (
+              <p>{recordModal?.RTL}</p>
+            ) : (
+              <p style={{ color: "red" }}>nedeterminat</p>
+            )}
           </div>
         </Box>
       </Modal>

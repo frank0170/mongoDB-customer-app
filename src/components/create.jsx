@@ -10,6 +10,8 @@ export default function Create() {
     Data: "",
     Lucrare: "",
     proiect: "",
+    RTL: "",
+    Localitate: "",
     smsTrimis: false,
   });
   const navigate = useNavigate();
@@ -46,6 +48,8 @@ export default function Create() {
       Data: "",
       Lucrare: "",
       proiect: "",
+      RTL: "",
+      Localitate: "",
       smsTrimis: false,
     });
     navigate("/");
@@ -68,7 +72,7 @@ export default function Create() {
         </Button>
       </div>
       <form onSubmit={onSubmit}>
-      <div className="form-group">
+        <div className="form-group">
           <label htmlFor="name">Nume</label>
           <input
             type="text"
@@ -78,7 +82,7 @@ export default function Create() {
             onChange={(e) => updateForm({ nume: e.target.value })}
           />
         </div>
-        
+
         <div style={{ marginTop: "10px" }}>
           <div className="form-group">
             <label htmlFor="position">Telefon</label>
@@ -140,6 +144,32 @@ export default function Create() {
               id="position"
               value={form.proiect}
               onChange={(e) => updateForm({ proiect: e.target.value })}
+            />
+          </div>
+        </div>
+
+        <div style={{ marginTop: "10px" }}>
+          <div className="form-group">
+            <label htmlFor="position">RTL</label>
+            <input
+              type="text"
+              className="form-control"
+              id="position"
+              value={form.RTL}
+              onChange={(e) => updateForm({ RTL: e.target.value })}
+            />
+          </div>
+        </div>
+
+        <div style={{ marginTop: "10px" }}>
+          <div className="form-group">
+            <label htmlFor="position">Localitate</label>
+            <input
+              type="text"
+              className="form-control"
+              id="position"
+              value={form.Localitate}
+              onChange={(e) => updateForm({ Localitate: e.target.value })}
             />
           </div>
         </div>
