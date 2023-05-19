@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import Factura from "./pdfs/factura";
+import Contract from "./pdfs/contract";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const Record = (props) => {
   return (
@@ -11,14 +14,32 @@ const Record = (props) => {
       <td>{props.record.telefon}</td>
       <td>{props.record.Data}</td>
       <td>
-        {/* <Link style={{color: 'black'}} to={`/details/${props.record._id}`}>
-          Detalii
-        </Link>{" "}
-        | */}
-        <Link style={{ color: "black" }} to={`/edit/${props.record._id}`}>
+      <PDFDownloadLink
+          document={<Contract record={props.record} />}
+          fileName={`${"Contract "}${props.record.nume}${" "}${
+            props.record.Data
+          }${".pdf"}`}
+        >
+          {({ blob, url, loading, error }) =>
+            loading ? "Generating PDF..." : <Button>Contract</Button>
+          }
+        </PDFDownloadLink>
+        |
+        <PDFDownloadLink
+          document={<Factura record={props.record} />}
+          fileName={`${"Factura "}${props.record.nume}${" "}${
+            props.record.Data
+          }${".pdf"}`}
+        >
+          {({ blob, url, loading, error }) =>
+            loading ? "Generating PDF..." : <Button>Factura</Button>
+          }
+        </PDFDownloadLink>
+        | {" "}
+        <Link style={{ color: "black", textDecoration: 'none' }} to={`/edit/${props.record._id}`}>
           Edit
         </Link>{" "}
-        |
+        {/* |
         <Button
           style={{ color: "red" }}
           onClick={() => {
@@ -26,7 +47,7 @@ const Record = (props) => {
           }}
         >
           Delete
-        </Button>
+        </Button> */}
       </td>
     </tr>
   );

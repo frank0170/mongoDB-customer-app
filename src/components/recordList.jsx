@@ -75,6 +75,7 @@ export default function RecordList() {
     width: 400,
     bgcolor: "background.paper",
     border: "2px solid #000",
+    borderRadius: '10px',
     boxShadow: 24,
     p: 4,
   };
@@ -123,13 +124,12 @@ export default function RecordList() {
           placeholder="Cauta clienti..."
         />
       </div>
-      <table className="table table-striped" style={{ marginTop: 20 }}>
+      <table className="table table-striped" style={{ marginTop: 20, borderSpacing: '50px' }}>
         <thead>
           <tr>
             <th>Nume</th>
             <th>Telefon</th>
             <th>Verificare</th>
-            <th>Actiuni</th>
           </tr>
         </thead>
         <tbody>{recordList()}</tbody>
