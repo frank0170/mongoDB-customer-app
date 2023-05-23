@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const connectionString = "mongodb+srv://franky64:1MCwJWehmJsdRQpz@cluster0.b5xnt2y.mongodb.net/?retryWrites=true&w=majority";
+const connectionString = "mongo-db-server";
 
 const client = new MongoClient(connectionString);
 
@@ -11,6 +11,6 @@ try {
   console.error(e);
 }
 
-let db = conn.db("vimato-test");
+let db = conn.db("mongo-db");
 
 export default db;
