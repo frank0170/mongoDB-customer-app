@@ -14,7 +14,7 @@ const Record = (props) => {
       <td>{props.record.telefon}</td>
       <td>{props.record.Data}</td>
       <td>
-      <PDFDownloadLink
+        <PDFDownloadLink
           document={<Contract record={props.record} />}
           fileName={`${"Contract "}${props.record.nume}${" "}${
             props.record.Data
@@ -25,7 +25,7 @@ const Record = (props) => {
           }
         </PDFDownloadLink>
         |
-        <PDFDownloadLink
+        {/* <PDFDownloadLink
           document={<Factura record={props.record} />}
           fileName={`${"Factura "}${props.record.nume}${" "}${
             props.record.Data
@@ -34,9 +34,12 @@ const Record = (props) => {
           {({ blob, url, loading, error }) =>
             loading ? "Generating PDF..." : <Button>Factura</Button>
           }
-        </PDFDownloadLink>
-        | {" "}
-        <Link style={{ color: "black", textDecoration: 'none' }} to={`/edit/${props.record._id}`}>
+        </PDFDownloadLink> */}
+        <Button onClick={() => props.handleInv(props.record)}>Factura</Button> |{" "}
+        <Link
+          style={{ color: "black", textDecoration: "none" }}
+          to={`/edit/${props.record._id}`}
+        >
           Edit
         </Link>{" "}
         {/* |
