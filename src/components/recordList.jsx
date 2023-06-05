@@ -19,6 +19,8 @@ import Factura from "./pdfs/factura";
 import Contract from "./pdfs/contract";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
+import Login from "./login";
+
 export default function RecordList() {
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -101,6 +103,8 @@ export default function RecordList() {
   const onNextPage = () => {
     setCurrentPage(currentPage + 1);
   };
+
+  const [logIn, setLogIn] = React.useState(false)
 
   const onPrevPage = () => {
     setCurrentPage(currentPage - 1);
@@ -220,7 +224,10 @@ export default function RecordList() {
 
   // This following section will display the table with the records of individuals.
   return (
+
     <div>
+          {logIn ? (
+            <div> 
       <div
         style={{
           display: "flex",
@@ -255,6 +262,8 @@ export default function RecordList() {
         onNextPage={onNextPage}
         onPrevPage={onPrevPage}
       />
+      </div>
+          ) : <Login setLogIn={setLogIn}/> }
 
       <Modal
         open={open}
