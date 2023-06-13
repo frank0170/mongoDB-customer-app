@@ -58,10 +58,6 @@ const Details = () => {
         <label htmlFor="name">Tip Lucrare</label>
         <p>{form.Lucrare}</p>
       </div>
-      <div className="form-group">
-        <label htmlFor="name">Proiect</label>
-        <p>{form.proiect}</p>
-      </div>
     </div>
   );
 };

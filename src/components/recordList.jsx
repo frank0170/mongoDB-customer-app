@@ -27,6 +27,11 @@ export default function RecordList() {
   const month = (currentDate.getMonth() + 1).toString().padStart(2, "0");
   const day = currentDate.getDate().toString().padStart(2, "0");
   const currentDateInput = `${day}-${month}-${year}`;
+<<<<<<< Updated upstream
+=======
+  const logIn = localStorage.getItem(login)
+
+>>>>>>> Stashed changes
 
   const [records, setRecords] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,9 +42,13 @@ export default function RecordList() {
     Adresa: "",
     Data: "",
     Lucrare: "",
+<<<<<<< Updated upstream
     proiect: "",
     RTL: "",
     Localitate: "",
+=======
+
+>>>>>>> Stashed changes
   });
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
@@ -263,7 +272,11 @@ export default function RecordList() {
         onPrevPage={onPrevPage}
       />
       </div>
+<<<<<<< Updated upstream
           ) : <Login setLogIn={setLogIn}/> }
+=======
+          ) : <Login /> }
+>>>>>>> Stashed changes
 
       <Modal
         open={open}
@@ -304,32 +317,204 @@ export default function RecordList() {
               <p style={{ color: "red" }}>nedeterminat</p>
             )}
           </div>
+        </Box>
+      </Modal>
 
-          <div className="form-group">
-            <h4>Proiect</h4>
-            {recordModal?.proiect ? (
-              <p>{recordModal?.proiect}</p>
-            ) : (
-              <p style={{ color: "red" }}>nedeterminat</p>
-            )}
-          </div>
+      <Modal
+        open={openInv}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={styleInv}>
+          <div>
+            <h1 style={{ marginBottom: "20px" }}>Factura</h1>
+            <span
+              style={{ marginRight: "10px", fontSize: "20px", color: "grey" }}
+            >
+              {" "}
+              Data:{" "}
+            </span>
+            <TextField
+              type="text"
+              placeholder="Data"
+              value={dateInv}
+              onChange={(e) => setDateInv(e.target.value)}
+            />
+            <div style={{ marginTop: "20px" }}>
+              <TextField
+                type="text"
+                placeholder="Nume"
+                value={itemName}
+                onChange={(e) => setItemName(e.target.value)}
+              />
+              <TextField
+                type="number"
+                placeholder="Cantitate"
+                value={itemQuantity}
+                onChange={(e) => setItemQuantity(e.target.value)}
+              />
+              <TextField
+                type="number"
+                placeholder="Pret"
+                value={itemPrice}
+                onChange={(e) => setItemPrice(e.target.value)}
+              />
+              <Button onClick={handleAddItem}>Adauga</Button>
+              <List>
+                {items.map((item, index) => (
+                  <ListItem key={index}>
+                    {editingIndex === index ? (
+                      <>
+                        <TextField
+                          type="text"
+                          placeholder="Nume"
+                          value={item.name}
+                          onChange={(e) => {
+                            const updatedName = e.target.value;
+                            handleEditItem(
+                              index,
+                              updatedName,
+                              item.quantity,
+                              item.price
+                            );
+                          }}
+                        />
+                        <TextField
+                          type="number"
+                          placeholder="Cantitate"
+                          value={item.quantity}
+                          onChange={(e) => {
+                            const updatedQuantity = e.target.value;
+                            handleEditItem(
+                              index,
+                              item.name,
+                              updatedQuantity,
+                              item.price
+                            );
+                          }}
+                        />
+                        <TextField
+                          type="number"
+                          placeholder="Pret"
+                          value={item.price}
+                          onChange={(e) => {
+                            const updatedPrice = e.target.value;
+                            handleEditItem(
+                              index,
+                              item.name,
+                              item.quantity,
+                              updatedPrice
+                            );
+                          }}
+                        />
+                        <Button
+                          onClick={() =>
+                            handleEditItem(
+                              index,
+                              item.name,
+                              item.quantity,
+                              item.price
+                            )
+                          }
+                        >
+                          Salveaza
+                        </Button>
+                      </>
+                    ) : (
+                      <>
+                        <div
+                          style={{
+                            border: "1px solid grey",
+                            borderRadius: "5px",
+                            padding: "10px",
+                            marginRight: "5px",
+                            fontSize: "20px",
+                            color: "grey",
+                          }}
+                        >
+                          Nume: {item.name}
+                        </div>
+                        <div
+                          style={{
+                            border: "1px solid grey",
+                            borderRadius: "5px",
+                            padding: "10px",
+                            marginRight: "5px",
+                            fontSize: "20px",
+                            color: "grey",
+                          }}
+                        >
+                          Cantitate: {item.quantity}
+                        </div>
+                        <div
+                          style={{
+                            border: "1px solid grey",
+                            borderRadius: "5px",
+                            padding: "10px",
+                            marginRight: "5px",
+                            fontSize: "20px",
+                            color: "grey",
+                          }}
+                        >
+                          Pret: {item.price}
+                        </div>
 
-          <div className="form-group">
-            <h4>Localitate</h4>
-            {recordModal?.Localitate ? (
-              <p>{recordModal?.Localitate}</p>
-            ) : (
-              <p style={{ color: "red" }}>nedeterminat</p>
-            )}
-          </div>
+                        {/* <Button onClick={() => setEditingIndex(index)}>
+                          Editeza
+                        </Button> */}
 
-          <div className="form-group">
-            <h4>RTL</h4>
-            {recordModal?.RTL ? (
-              <p>{recordModal?.RTL}</p>
-            ) : (
-              <p style={{ color: "red" }}>nedeterminat</p>
-            )}
+                        <Button onClick={() => handleDeleteItem(index)}>
+                          Sterge
+                        </Button>
+                      </>
+                    )}
+                  </ListItem>
+                ))}
+              </List>
+            </div>
+            <span
+              style={{ marginRight: "10px", fontSize: "20px", color: "grey" }}
+            >
+              {" "}
+              TVA:{" "}
+            </span>
+            <TextField
+              type="text"
+              placeholder="TVA"
+              value={tva}
+              onChange={(e) => setTva(e.target.value)}
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <div>
+                <h5 style={{ marginTop: "20px" }}>Pret Total</h5>
+                {pretTotal}
+              </div>
+
+              <PDFDownloadLink
+                document={
+                  <Factura record={recordModal} dateFactura={dateFactura} />
+                }
+                fileName={`${"Factura "}${recordModal.nume}${" "}${
+                  recordModal.Data
+                }${".pdf"}`}
+              >
+                {({ blob, url, loading, error }) =>
+                  loading ? (
+                    "Generating PDF..."
+                  ) : (
+                    <Button variant="outlined"> Genereaza Factura</Button>
+                  )
+                }
+              </PDFDownloadLink>
+            </div>
           </div>
         </Box>
       </Modal>

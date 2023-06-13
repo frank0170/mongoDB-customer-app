@@ -15,6 +15,7 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "file-saver": "^2.0.5",
+    "md5": "^2.3.0",
     "mongodb": "^5.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -28,7 +29,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+<<<<<<< Updated upstream
     "backend" : "node src/server/server.mjs",
+=======
+    "backend": "node src/server/server.mjs",
+>>>>>>> Stashed changes
     "electron": "electron .",
     "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron ."
   },
