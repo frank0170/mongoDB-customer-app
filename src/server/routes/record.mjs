@@ -31,13 +31,6 @@ router.post("/", async (req, res) => {
     Adresa: req.body.Adresa,
     Data: req.body.Data,
     Lucrare: req.body.Lucrare,
-<<<<<<< Updated upstream
-    proiect: req.body.proiect,
-    RTL: req.body.RTL,
-    Localitate: req.body.Localitate,
-    smsTrimis: false,
-=======
->>>>>>> Stashed changes
   };
   const collectionName = "Sheet1";
   let collection = await db.collection(collectionName);
@@ -55,12 +48,6 @@ router.patch("/:id", async (req, res) => {
       Adresa: req.body.Adresa,
       Data: req.body.Data,
       Lucrare: req.body.Lucrare,
-<<<<<<< Updated upstream
-      proiect: req.body.proiect,
-      RTL: req.body.RTL,
-      Localitate: req.body.Localitate,
-=======
->>>>>>> Stashed changes
     },
   };
   const collectionName = "Sheet1";
@@ -90,17 +77,6 @@ router.delete("/:id", async (req, res) => {
   res.send(result).status(200);
 });
 
-<<<<<<< Updated upstream
-router.post("/login", async (req, res) => {
-  let newlogin = {
-    email: req.body.email,
-    password: req.body.password,
-  };
-
-  const login = "accounts";
-  let collection = await db.collection(login);
-  let result = await collection.insertOne(newlogin);
-=======
 router.push("/login", async (req,res) => {
   let newUser= {
     email: req.body.nume,
@@ -110,7 +86,6 @@ router.push("/login", async (req,res) => {
   const collectionName = 'Users'
   let collection = await db.collection(collectionName);
   let result = await collection.insertOne(newUser);
->>>>>>> Stashed changes
   res.send(result).status(204);
 });
 

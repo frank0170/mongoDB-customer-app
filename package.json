@@ -29,11 +29,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-<<<<<<< Updated upstream
-    "backend" : "node src/server/server.mjs",
-=======
     "backend": "node src/server/server.mjs",
->>>>>>> Stashed changes
     "electron": "electron .",
     "electron-dev": "ELECTRON_START_URL=http://localhost:3000 electron ."
   },
