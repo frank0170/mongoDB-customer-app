@@ -103,7 +103,7 @@ router.post('/login-verify', async (req, res) => {
     }
 
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await md5.compare(password, user.password);
 
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid password' });
