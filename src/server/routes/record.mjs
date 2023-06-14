@@ -89,4 +89,30 @@ router.push("/login", async (req,res) => {
   res.send(result).status(204);
 });
 
+router.post('/login-verify', async (req, res) => {
+  const { email, password } = req.body;
+  const collectionName = 'Users'
+  let collection = await db.collection(collectionName);
+
+  try {
+
+    const user = await collection.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
+      return res.status(401).json({ message: 'Invalid password' });
+    }
+    res.send(true)
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 export default router;

@@ -15,13 +15,41 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleLoginClick = async (e) => {
+  const handleSignUpClick = async (e) => {
     e.preventDefault();
 
     try {
       const encryptedPassword = md5(password); 
 
       const response = await fetch("http://localhost:5050/record/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password: encryptedPassword }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message);
+      }
+
+      localStorage.setItem("login", "true");
+      setLogIn(true);
+
+    } catch (error) {
+      setError(error.message);
+      console.log(error);
+    }
+  };
+
+  const handleLoginClick = async (e) => {
+    e.preventDefault();
+
+    try {
+      const encryptedPassword = md5(password); 
+
+      const response = await fetch("http://localhost:5050/record/login-verify", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +84,9 @@ const Login = () => {
           <label>Password:</label>
           <TextField type="password" value={password} onChange={handlePasswordChange} required />
         </div>
-        <Button type="submit">Login</Button>
+        <Button type="submit" onClick={handleSignUpClick}>Sign up</Button>
+        <br/>
+        <Button type="submit" onClick={handleLoginClick}>Log in</Button>
       </form>
     </div>
   );
