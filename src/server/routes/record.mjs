@@ -77,7 +77,7 @@ router.delete("/:id", async (req, res) => {
   res.send(result).status(200);
 });
 
-router.push("/login", async (req,res) => {
+router.post("/login", async (req,res) => {
   let newUser= {
     email: req.body.nume,
     address: req.body.telefon,

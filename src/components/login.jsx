@@ -19,7 +19,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const encryptedPassword = md5(password); 
+      const encryptedPassword = md5(password);
 
       const response = await fetch("http://localhost:5050/record/login", {
         method: "POST",
@@ -35,8 +35,7 @@ const Login = () => {
       }
 
       localStorage.setItem("login", "true");
-      setLogIn(true);
-
+      window.location.reload();
     } catch (error) {
       setError(error.message);
       console.log(error);
@@ -47,15 +46,18 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const encryptedPassword = md5(password); 
+      const encryptedPassword = md5(password);
 
-      const response = await fetch("http://localhost:5050/record/login-verify", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password: encryptedPassword }),
-      });
+      const response = await fetch(
+        "http://localhost:5050/record/login-verify",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password: encryptedPassword }),
+        }
+      );
 
       if (!response.ok) {
         const error = await response.json();
@@ -63,8 +65,7 @@ const Login = () => {
       }
 
       localStorage.setItem("login", "true");
-      setLogIn(true);
-
+      window.location.reload();
     } catch (error) {
       setError(error.message);
       console.log(error);
@@ -72,21 +73,52 @@ const Login = () => {
   };
 
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+      }}
+    >
       <h2>Login</h2>
       {error && <div className="error">{error}</div>}
-      <form onSubmit={handleLoginClick} style={{ display: "flex", alignItems: "center", flexDirection: "column", justifyContent: "center", border: "1px solid grey", borderRadius: "10px" }}>
+      <form
+        onSubmit={handleLoginClick}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          justifyContent: "center",
+          border: "1px solid grey",
+          borderRadius: "10px",
+        }}
+      >
         <div>
           <label>Email:</label>
-          <TextField type="email" value={email} onChange={handleEmailChange} required />
+          <TextField
+            type="email"
+            value={email}
+            onChange={handleEmailChange}
+            required
+          />
         </div>
         <div>
           <label>Password:</label>
-          <TextField type="password" value={password} onChange={handlePasswordChange} required />
+          <TextField
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+            required
+          />
         </div>
-        <Button type="submit" onClick={handleSignUpClick}>Sign up</Button>
-        <br/>
-        <Button type="submit" onClick={handleLoginClick}>Log in</Button>
+        <Button type="submit" onClick={handleSignUpClick}>
+          Sign up
+        </Button>
+        <br />
+        <Button type="submit" onClick={handleLoginClick}>
+          Log in
+        </Button>
       </form>
     </div>
   );
