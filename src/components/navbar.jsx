@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "bootstrap";
 
 // We import bootstrap to make our application look better.
 import "bootstrap/dist/css/bootstrap.css";
