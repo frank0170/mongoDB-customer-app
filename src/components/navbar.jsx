@@ -39,11 +39,6 @@ export default function Navbar() {
             color: "red",
           }}
         >
-          <button type="button" class="btn btn-danger" onClick={handleLogOut}>
-            {" "}
-            Log Out
-          </button>
-
           <NavLink
             className="nav-link"
             to="/create"
@@ -51,6 +46,11 @@ export default function Navbar() {
           >
             Adauga client
           </NavLink>
+
+          <button type="button" class="btn btn-danger" onClick={handleLogOut}>
+            {" "}
+            Log Out
+          </button>
         </div>
       </div>
     </div>
