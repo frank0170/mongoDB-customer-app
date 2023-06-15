@@ -29,20 +29,21 @@ export default function Navbar() {
           <h2 style={{ marginLeft: "20px" }}>Vimato</h2>{" "}
         </NavLink>
 
-        <div>
-          <Button
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              flexDirection: "row",
-              gap: '50px',
-              color: 'red'
-            }}
-            onClick={handleLogOut}
-          >
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexDirection: "row",
+            gap: "50px",
+            color: "red",
+          }}
+        >
+          <button type="button" class="btn btn-danger" onClick={handleLogOut}>
+            {" "}
             Log Out
-          </Button>
+          </button>
+
           <NavLink
             className="nav-link"
             to="/create"
