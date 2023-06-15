@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
 
 
 
-// Create Document Component
 const Contract = ({record}) => (
   <Document>
     <Page size="A4" style={styles.page}>
@@ -28,7 +27,6 @@ const Contract = ({record}) => (
         <Text>Contract pentru {record.nume} in data de {record.Data}</Text>
         <br/>
         <br/>
-        <Text>Din Localitatea {record.Localitate} </Text>
       </View>
     </Page>
   </Document>

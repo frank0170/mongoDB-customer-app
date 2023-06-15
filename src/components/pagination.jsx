@@ -14,7 +14,6 @@ const Pagination = ({ total, current, onClick, onNextPage, onPrevPage }) => {
     );
 
     if (total <= 10) {
-      // Show all pages if there are 10 or fewer pages
       pageButtons.push(
         ...pages.map((page) => (
           <Button
@@ -27,19 +26,16 @@ const Pagination = ({ total, current, onClick, onNextPage, onPrevPage }) => {
         ))
       );
     } else {
-      // Show first page
       pageButtons.push(
         <Button key={1} onClick={() => onClick(1)} disabled={current === 1}>
           1
         </Button>
       );
 
-      // Show ellipsis after the first page if the current page is not close to the first page
       if (current > 4) {
         pageButtons.push(<span key="ellipsis-start">...</span>);
       }
 
-      // Show middle pages
       const startPage = Math.max(2, current - 2);
       const endPage = Math.min(current + 2, total - 1);
       for (let i = startPage; i <= endPage; i++) {
@@ -50,12 +46,10 @@ const Pagination = ({ total, current, onClick, onNextPage, onPrevPage }) => {
         );
       }
 
-      // Show ellipsis before the last page if the current page is not close to the last page
       if (current < total - 3) {
         pageButtons.push(<span key="ellipsis-end">...</span>);
       }
 
-      // Show last page
       pageButtons.push(
         <Button
           key={total}

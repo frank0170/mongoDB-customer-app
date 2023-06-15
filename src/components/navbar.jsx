@@ -1,16 +1,11 @@
 import React from "react";
-import { Button } from "bootstrap";
-
-// We import bootstrap to make our application look better.
 import "bootstrap/dist/css/bootstrap.css";
-
-// We import NavLink to utilize the react router.
 import { NavLink } from "react-router-dom";
 
-// Here, we display our Navbar
 export default function Navbar() {
   const handleLogOut = () => {
     localStorage.removeItem("login");
+    window.location.reload();
   };
 
   return (
@@ -36,7 +31,6 @@ export default function Navbar() {
             justifyContent: "space-between",
             flexDirection: "row",
             gap: "50px",
-            color: "red",
           }}
         >
           <NavLink
@@ -47,7 +41,12 @@ export default function Navbar() {
             Adauga client
           </NavLink>
 
-          <button type="button" class="btn btn-danger" onClick={handleLogOut}>
+          <button
+            type="button"
+            class="btn btn-danger"
+            onClick={handleLogOut}
+            style={{ marginRight: "30px" }}
+          >
             {" "}
             Log Out
           </button>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Page, Text, View, Document, StyleSheet } from "@react-pdf/renderer";
 
-// Create styles
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
@@ -14,7 +13,6 @@ const styles = StyleSheet.create({
   },
 });
 
-// Create Document Component
 const Factura = ({ record, dateFactura }) => (
   <Document>
     <Page size="A4" style={styles.page}>
@@ -38,7 +36,6 @@ const Factura = ({ record, dateFactura }) => (
         })}
 
         <br />
-        <Text>Din Localitatea {record.Localitate} </Text>
         <br />
         <br />
         <Text>Pret final: {dateFactura.pretTotal}</Text>

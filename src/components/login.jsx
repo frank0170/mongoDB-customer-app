@@ -7,38 +7,54 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
+  const handleEmailChange = (event) => {
+    const trimmedEmail = event.target.value.trim();
+    setEmail(trimmedEmail);
   };
 
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+  const validateEmail = (email) => {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    return emailRegex.test(email);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
   };
 
   const handleSignUpClick = async (e) => {
     e.preventDefault();
 
-    try {
-      const encryptedPassword = md5(password);
-
-      const response = await fetch("http://localhost:5050/record/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password: encryptedPassword }),
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message);
+    if (!validateEmail(email)) {
+      alert("Invalid email address");
+      return;
+    } else if (!password.trim()) {
+      {
+        alert("Please enter a password");
+        return;
       }
+    } else {
+      try {
+        const encryptedPassword = md5(password);
 
-      localStorage.setItem("login", "true");
-      window.location.reload();
-    } catch (error) {
-      setError(error.message);
-      console.log(error);
+        const response = await fetch("http://localhost:5050/record/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password: encryptedPassword }),
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.message);
+        }
+
+        localStorage.setItem("login", "true");
+        window.location.reload();
+      } catch (error) {
+        setError(error.message);
+        console.log(error);
+      }
     }
   };
 
@@ -81,20 +97,19 @@ const Login = () => {
         flexDirection: "column",
       }}
     >
-      <h2>Login</h2>
+      <h2 style={{ marginBottom: "30px" }}>Login</h2>
       {error && <div className="error">{error}</div>}
       <form
         onSubmit={handleLoginClick}
         style={{
           display: "flex",
-          alignItems: "center",
           flexDirection: "column",
-          justifyContent: "center",
           border: "1px solid grey",
           borderRadius: "10px",
+          padding: "10px",
         }}
       >
-        <div>
+        <div style={{ marginBottom: "10px" }}>
           <label>Email:</label>
           <TextField
             type="email"
@@ -115,7 +130,6 @@ const Login = () => {
         <Button type="submit" onClick={handleSignUpClick}>
           Sign up
         </Button>
-        <br />
         <Button type="submit" onClick={handleLoginClick}>
           Log in
         </Button>
